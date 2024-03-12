@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="Phonebook.Components.UpcomingEvents"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Phonebook.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="220">
+    <Grid>
+        <Grid.Resources>
+            <ResourceDictionary>
+                <Style TargetType="Button">
+                    <Setter Property="Foreground" Value="white"/>
+                    <Setter Property="Background" Value="#FF1A6BF9"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                    <Setter Property="BorderBrush" Value="White"/>
+                </Style>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Upcoming Birthdays" FontSize="15" VerticalAlignment="Center"/>
+            <Button Content="Refersh" Grid.Column="1" Command="{Binding BirthdayLoadCommand}"/>
+        </Grid>
+        
+
+        <Border Grid.Row="1" BorderBrush="Purple" BorderThickness="1" CornerRadius="10" Padding="5">
+            <ScrollViewer>
+                <ListView ItemsSource="{Binding UpComingBirthdays}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="Auto" Header="Person" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Width="Auto" Header="Surname" DisplayMemberBinding="{Binding Surname}"/>
+                        <GridViewColumn Width="Auto" Header="Day" DisplayMemberBinding="{Binding Birthday, StringFormat={}{0:dddd}}"/>
+                        <GridViewColumn Width="Auto" Header="Date" DisplayMemberBinding="{Binding Birthday, StringFormat={}{0:dd MMMM}}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+           </ScrollViewer>
+        </Border>
+    </Grid>
+</UserControl>

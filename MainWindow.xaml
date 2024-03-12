@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp" 
+        xmlns:views="clr-namespace:Phonebook.Views"
+        xmlns:viewmodels="clr-namespace:Phonebook.ViewModels" 
+        xmlns:custom="clr-namespace:ModalControl;assembly=ModalControl"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewmodels:AddContactViewModel}">
+            <views:AddContactView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:UpdateContactViewModel}">
+            <views:UpdateContactView />
+        </DataTemplate>
+    </Window.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <custom:Modal Panel.ZIndex="1" IsOpen="{Binding IsModalOpen}">
+                <ContentControl Margin="40 25" Content="{Binding CurrentModalViewModel}"/>
+            </custom:Modal>
+
+            <views:PhonebookView DataContext="{Binding PhonebookViewModel}"/>
+        </Grid>
+    </ScrollViewer>
+</Window>
