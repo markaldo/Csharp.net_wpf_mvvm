@@ -1,6 +1,3 @@
-# C-.net_wpf_mvvm
-Phonebook app made in C# and XAML language..
-
 # Phonebook Application (WPF, C#, MVVM)
 
 **A simple phonebook application built using C#, WPF (Windows Presentation Foundation), and the MVVM (Model-View-ViewModel) architectural pattern.**
